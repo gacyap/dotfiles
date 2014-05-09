@@ -1,0 +1,14 @@
+[color]
+	ui = true
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	d = difftool
+[user]
+	name = tomoyuki shimomura
+	email = t_shimomura@cgate.jp
+[diff]
+	tool = gvimdiff
+[difftool]
+	prompt = false
+[push]
+	default = matching
