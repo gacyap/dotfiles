@@ -1,3 +1,6 @@
 [submodule "home/.zsh/zsh-completions"]
 	path = home/.zsh/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "home/.iterm/Hybrid.itermcolors"]
+	path = home/.iterm/Hybrid.itermcolors
+	url = https://gist.github.com/6362811.git
