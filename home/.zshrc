@@ -1,4 +1,7 @@
-# 環境変数
+source ~/.zsh/env.zsh
+#source ~/.zsh/
+
+ 環境変数
 export LANG=ja_JP.UTF-8
 autoload -Uz colors
 colors
