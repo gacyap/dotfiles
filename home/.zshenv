@@ -1,5 +1,8 @@
-export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 # PATH の内容と同期している配列変数 path も使える
 path=(
