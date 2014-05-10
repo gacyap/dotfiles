@@ -1,3 +1,3 @@
-[submodule "bootstrap"]
-	path = bootstrap
-	url = git://github.com/twitter/bootstrap.git
+[submodule "home/.zsh/zsh-completions"]
+	path = home/.zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
