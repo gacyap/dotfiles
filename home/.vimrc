@@ -1,6 +1,35 @@
-" NeoBundleInstall!
+"viと互換しない
 set nocompatible
-filetype off 
+
+if has('vim_starting') && has('reltime')
+    let g:startuptime = reltime()
+    augroup vimrc-startuptime
+    autocmd! VimEnter * let g:startuptime = reltime(g:startuptime) | redraw
+        \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
+    augroup END
+endif
+
+"OS判定
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_mac = !s:is_windows && !s:is_cygwin
+    \ && (has('mac') || has('macunix') || has('gui_macvim')
+    \ || (!executable('xdg-open') && system('uname') =~? '^darwin'))
+
+
+" 言語指定
+if s:is_windows
+    "For Windows.
+    language messages ja_JP
+elseif s:is_mac
+    " For Mac.
+    language messages ja_JP.UTF-8
+    language ctype ja_JP.UTF-8
+    language time ja_JP.UTF-8
+else
+    " For Linux.
+    language messages C
+endif
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
@@ -9,119 +38,124 @@ endif
 
 filetype plugin on
 filetype indent on
-syntax enable
-filetype on
+syntax on
+"filetype off 
 
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8,euc-jp,sjis
 set fileformats=unix,dos,mac
+set helplang& helplang=ja,en
 "not make file.swp
 set noswapfile
-"avairable clipbord
-" set clipboard=unnamed,autoselect
-set clipboard+=unnamed
 set number
 set confirm
-"helpを日本語優先
-set helplang=ja
+"ヤンクでクリップボードコピー
+set clipboard=unnamed,autoselect
+"in swap-file dir
+set directory=$HOME/vimbackup
 
-" color scheme
-NeoBundle 'w0ng/vim-hybrid'
-let g:hybrid_use_iTerm_colors = 1
-colorscheme hybrid
-if !has('gui_running')
-    set t_Co=256
-endif
-
-"------- tab conf ------
-"tabspace -> brank
-set expandtab
-"auto indent width
-set shiftwidth=4
+"tab + indent
 set tabstop=4
-set softtabstop=4
-"go on before indent when start newline
+set shiftwidth=4
+set expandtab
 set autoindent
-"改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-set smartindent
-"-------- /tab ---------
+set smarttab
+set showmatch
+
+"serach
+set hlsearch
+set incsearch
+"大文字小文字区別なし
+set ignorecase
+"大文字の場合は区別
+set smartcase
 
 "コマンドラインの高さを2行に
 set cmdheight=2
-"use case insensitive search, except when using capital letters
-set ignorecase
-"高度な自動インデント
-set smartcase
-set wildmenu
-"検索ハイライト
-set hlsearch
+" ファイル補完時のファイル名表示形式
+set wildmode=list,full
 "スペースキーでカーソルを画面中心に保ってスクロール
-nnoremap <Space> jzz
-nnoremap <S-Space> kzz
-set cursorline
-"ビジュアルモード時vで行末まで選択
-vnoremap v $h
+"nnoremap <Space> jzz
+"nnoremap <S-Space> kzz
+"set cursorline
 
-"augroup BufferAu
-"  autocmd!
-  " カレントディレクトリを自動的に移動
-"  autocmd BufNewFile,BufRead,BufEnter * if isdirectory(expand("%:p:h")) && bufname("%") !~ "NERD_tree" |cd %:p:h | endif
-"augroup END
-
-""CakePHPの.ctpファイルでシンタックス
-autocmd BufNewFile,BufRead *.ctp set filetype=php
-"Quick Escaping
-"inoremapc>
-"repeat same paste
-vnoremap <silent> <C-p> "0p<CR>
-
-"----------------------------------
-"set neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-" Enable omni completion. Not required if they are already set elsewhere in .vimrc
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"----------------------------------
-"set neosnippet
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-"originalrepos on github
+" Unite
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neosnippet'
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
+NeoBundle 'Shougo/neomru.vim'
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 
-NeoBundle 'jpalardy/vim-slime' "grab some text and send to GNU(tmux)
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
+NeoBundle 'Shougo/vimfiler.vim'
+
+" 補完
+NeoBundle 'Shougo/neocomplcache'
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+   \ 'default' : ''
+   \ }
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+	return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+"color-scheme
+NeoBundle 'w0ng/vim-hybrid'
+let g:hybrid_use_iTerm_colors = 1
+colorscheme hybrid
+let g:Powerline_symbols = 'fancy'
+
+"status-line
+" conf.d/lightline.vim
+set laststatus=2
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+
+" load *.vim files
+set runtimepath+=~/.vim/
+runtime! conf.d/*.vim
+
+"================================================================
+"NeoBundle 'Shougo/vimproc'
+"NeoBundle 'VimClojure'
+"NeoBundle 'Shougo/vimshell'
+"NeoBundle 'Shougo/neocomplcache'
+"NeoBundle 'Shougo/neosnippet-snippets'
+"NeoBundle 'Shougo/neosnippet'
+
+"grab some text and send to GNU(tmux)
+"NeoBundle 'jpalardy/vim-slime' 
+"let g:slime_target = "tmux"
+"let g:slime_paste_file = "$HOME/.slime_paste"
+
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree.git' "view directory tree
   nmap <silent> <C-e>      :NERDTreeToggle<CR>
@@ -137,49 +171,20 @@ let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=0
 let g:NERDTreeMouseMode=2
 
-" Align : 高機能整形・桁揃えプラグイン
-NeoBundle 'Align'
-" フィルタリングと整形
-NeoBundle 'godlygeek/tabular'
-" マルチバイト対応の整形
-NeoBundle 'h1mesuke/vim-alignta'
-" YankRing.vim :ヤンクの履歴を管理し、順々に参照、出力できるようにする
-NeoBundle 'YankRing.vim'
+"hight spec grep
+NeoBundle 'rking/ag.vim' 
+"yank history manager
+"NeoBundle 'vim-scripts/YankRing' 
+"multi-words hilight manager
+NeoBundle 't9md/vim-quickhl' 
 
-NeoBundle 'rking/ag.vim'
-" multi-words hilight manager
-NeoBundle 't9md/vim-quickhl'
-
-"comment out
+"NeoBundle 'taichouchou2/alpaca_powertabline'
+"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+"
+" comment out
 NeoBundle 'scrooloose/nerdcommenter'
 " space behind comment 
 let NERDSpaceDelims = 1
 " toggle comment command
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
-
-NeoBundle 'vim-scripts/buftabs'
-noremap <C-p> :bp<CR>
-noremap <C-n> :bn<CR>
-" バッファタブにパスを省略してファイル名のみ表示する
-let g:buftabs_only_basename=1
-" バッファタブをステータスライン内に表示する
-let g:buftabs_in_statusline=1
-" 現在のバッファをハイライト
-let g:buftabs_active_highlight_group="Visual"
- 
-" statusline
-set laststatus=2
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-"----------------------------------
-" vim-gitgutter
-let g:gitgutter_sign_added = '✚'
-let g:gitgutter_sign_modified = '➜'
-let g:gitgutter_sign_removed = '✘'
-" lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-"----------- end ------------------

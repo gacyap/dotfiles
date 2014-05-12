@@ -5,7 +5,7 @@
 	d = difftool
 [user]
 	name = tomoyuki shimomura
-	email = t_shimomura@cgate.jp
+	email = st4439@gmail.com
 [diff]
 	tool = gvimdiff
 [difftool]
