@@ -1,12 +1,6 @@
 dotfiles
 ============
 
-## choose your .bashrc
-.bashrc.Linux or .bashrc.OSX
-
-You should change filename extension.
-ex. $ mv .bashrc.Linux .bashrc
-
 ## dotfiles
 This is the base set of config files, or "dotfiles", used on MakerSquare lab machines. This repo is formatted to work correctly with the homesick gem.
 
