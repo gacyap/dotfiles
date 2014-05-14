@@ -1,0 +1,10 @@
+noremap <Up> :<C-u>echohl WarningMsg \| echo "Don't use Up key!!! Press [k]" \| echohl None<CR>
+noremap! <Up> <ESC>:<C-u>echohl WarningMsg \| echo "Don't use Up key!!! Press [ESC][k]" \| echohl None<CR>
+noremap <Down> :<C-u>echohl WarningMsg \| echo "Don't use Down key!!! Press [j]" \| echohl None<CR>
+noremap! <Down> <ESC>:<C-u>echohl WarningMsg \| echo "Don't use Down key!!! Press [ESC][j]" \| echohl None<CR>
+noremap <Left> :<C-u>echohl WarningMsg \| echo "Don't use Left key!!! Press [l]" \| echohl None<CR>
+noremap! <Left> <ESC>:<C-u>echohl WarningMsg \| echo "Don't use Left key!!! Press [ESC][l]" \| echohl None<CR>
+noremap <Right> :<C-u>echohl WarningMsg \| echo "Don't use Right key!!! Press [h]" \| echohl None<CR>
+noremap! <Right> <ESC>:<C-u>echohl WarningMsg \| echo "Don't use Right key!!! Press [ESC][h]" \| echohl None<CR>
+noremap <BS> :<C-u>echohl WarningMsg \| echo "Don't use BackSpace key!!! Press [ctrl-h]" \| echohl None<CR>
+noremap! <BS> <ESC>:<C-u>echohl WarningMsg \| echo "Don't use BackSpace key!!! Press [ctrl-h]" \| echohl None<CR>
