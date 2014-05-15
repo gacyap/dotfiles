@@ -17,5 +17,8 @@ path=(/machine1/only/bin(N-/) $path)
 if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
     fpath=($HOME/.zsh/zsh-completions/src $fpath)
 fi
+if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
+    fpath=($HOME/.zsh/completions $fpath)
+fi
 autoload -Uz compinit
 compinit -u
