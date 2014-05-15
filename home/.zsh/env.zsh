@@ -13,12 +13,3 @@ path=(~/bin(N-/) ~/homebrew/bin(N-/) $path)
 # パスの後ろに (N-/) をつけると、ディレクトリが存在しない場合、パスが空文字列に置換される
 # 詳細は `man zshexpn` の Glob Qualifiers を参照
 path=(/machine1/only/bin(N-/) $path)
-
-if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
-    fpath=($HOME/.zsh/zsh-completions/src $fpath)
-fi
-if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
-    fpath=($HOME/.zsh/completions $fpath)
-fi
-autoload -Uz compinit
-compinit -u

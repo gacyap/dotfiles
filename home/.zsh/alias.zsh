@@ -1,11 +1,27 @@
 # エイリアス
-alias reload="source ~/.zshrc"
+alias rl='source ~/.zshrc'
+alias rlv='source ~/.vimrc'
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias v='vim'
+alias end='exit'
 alias ll='ls -al'
+alias tl='tail -f'
+alias vimdiff='vd'
+
+alias ga='git add'
+alias gc='git commit -m'
+alias g='git push'
+alias gc='git checkout'
+
+alias gb='git branch -a'
+alias gpl='git pull'
+alias gpm='git pull origin master'
+alias gd='git diff'
+alias gdc'git diff --cached'
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '

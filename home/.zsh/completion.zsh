@@ -1,9 +1,20 @@
 # 補完
+if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
+    fpath=($HOME/.zsh/zsh-completions/src $fpath)
+fi
+if [[ -d $HOME/.zsh/completions ]]; then
+    fpath=($HOME/.zsh/completions $fpath)
+fi
+# autoload -Uz compinit
+# compinit -u
 # 補完機能を有効にする
 autoload -Uz compinit; compinit
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# 補完候補をf n で選択できるようにする
+zstyle ':completion:*:default' menu select=2
 
 # ../ の後は今いるディレクトリを補完しない
 zstyle ':completion:*' ignore-parents parent pwd ..
