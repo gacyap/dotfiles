@@ -13,9 +13,9 @@ alias tl='tail -f'
 alias vimdiff='vd'
 
 alias ga='git add'
-alias gc='git commit -m'
-alias g='git push'
-alias gc='git checkout'
+alias gcm='git commit -m'
+alias gps='git push'
+alias gck='git checkout'
 
 alias gb='git branch -a'
 alias gpl='git pull'
