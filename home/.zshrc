@@ -10,6 +10,8 @@ source ~/.zsh/completion.zsh
 source ~/.zsh/option.zsh
 source ~/.zsh/alias.zsh
 source ~/.zsh/vcs.zsh
+# git コマンド補完 高速化
+source ~/.zsh/git-completion.bash
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
