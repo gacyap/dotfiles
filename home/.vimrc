@@ -70,7 +70,8 @@ set ignorecase
 "大文字の場合は区別
 set smartcase
 
-"コマンドラインの高さを2行に
+"コマンド/ステータスラインの高さ2行に
+set laststatus=2
 set cmdheight=2
 " ファイル補完時のファイル名表示形式
 set wildmode=list,full
@@ -83,6 +84,16 @@ set wildmode=list,full
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdtree.git' "view directory tree
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+
+NeoBundle 'rking/ag.vim' 
+
+" unite
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
@@ -92,7 +103,19 @@ nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 
-NeoBundle 'Shougo/vimfiler.vim'
+" nerdtree
+nmap <silent> <C-e>      :NERDTreeToggle<CR>
+vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+omap <silent> <C-e>      :NERDTreeToggle<CR>
+imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowHidden=1
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows=0
+let g:NERDTreeMouseMode=2
 
 " 補完
 NeoBundle 'Shougo/neocomplcache'
@@ -126,18 +149,19 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
+" comment out
+NeoBundle 'scrooloose/nerdcommenter'
+" space behind comment 
+let NERDSpaceDelims = 1
+" toggle comment command
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
+
 "color-scheme
 NeoBundle 'w0ng/vim-hybrid'
 let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
 let g:Powerline_symbols = 'fancy'
-
-"status-line
-" conf.d/lightline.vim
-set laststatus=2
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
 
 " load *.vim files
 set runtimepath+=~/.vim/
@@ -147,7 +171,6 @@ runtime! conf.d/*.vim
 "NeoBundle 'Shougo/vimproc'
 "NeoBundle 'VimClojure'
 "NeoBundle 'Shougo/vimshell'
-"NeoBundle 'Shougo/neocomplcache'
 "NeoBundle 'Shougo/neosnippet-snippets'
 "NeoBundle 'Shougo/neosnippet'
 
@@ -156,35 +179,9 @@ runtime! conf.d/*.vim
 "let g:slime_target = "tmux"
 "let g:slime_paste_file = "$HOME/.slime_paste"
 
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdtree.git' "view directory tree
-  nmap <silent> <C-e>      :NERDTreeToggle<CR>
-  vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-  omap <silent> <C-e>      :NERDTreeToggle<CR>
-  imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-  cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowHidden=1
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeDirArrows=0
-let g:NERDTreeMouseMode=2
-
-"hight spec grep
-NeoBundle 'rking/ag.vim' 
 "yank history manager
 "NeoBundle 'vim-scripts/YankRing' 
+
 "multi-words hilight manager
 NeoBundle 't9md/vim-quickhl' 
 
-"NeoBundle 'taichouchou2/alpaca_powertabline'
-"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-"
-" comment out
-NeoBundle 'scrooloose/nerdcommenter'
-" space behind comment 
-let NERDSpaceDelims = 1
-" toggle comment command
-nmap ,, <Plug>NERDCommenterToggle
-vmap ,, <Plug>NERDCommenterToggle
