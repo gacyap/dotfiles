@@ -1,6 +1,5 @@
 "viと互換しない
 set nocompatible
-
 if has('vim_starting') && has('reltime')
     let g:startuptime = reltime()
     augroup vimrc-startuptime
@@ -85,13 +84,15 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree.git' "view directory tree
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
-
 NeoBundle 'rking/ag.vim' 
+"multi-words hilight manager
+NeoBundle 't9md/vim-quickhl' 
 
 " unite
 let g:unite_enable_start_insert=1
@@ -117,39 +118,7 @@ let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=0
 let g:NERDTreeMouseMode=2
 
-" 補完
-NeoBundle 'Shougo/neocomplcache'
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-   \ 'default' : ''
-   \ }
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-	return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-" comment out
+" nerdcommenter  //comment out
 NeoBundle 'scrooloose/nerdcommenter'
 " space behind comment 
 let NERDSpaceDelims = 1
@@ -181,7 +150,3 @@ runtime! conf.d/*.vim
 
 "yank history manager
 "NeoBundle 'vim-scripts/YankRing' 
-
-"multi-words hilight manager
-NeoBundle 't9md/vim-quickhl' 
-

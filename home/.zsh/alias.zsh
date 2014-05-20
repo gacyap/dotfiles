@@ -13,13 +13,13 @@ alias tl='tail -f'
 alias vimdiff='vd'
 
 alias ga='git add'
-alias gcm='git commit -m'
-alias gps='git push'
-alias gck='git checkout'
+alias gc='git commit -m'
+alias gph='git push'
+alias gct='git checkout'
 
 alias gb='git branch -a'
 alias gpl='git pull'
-alias gpm='git pull origin master'
+alias gplom='git pull origin master'
 alias gd='git diff'
 alias gdc'git diff --cached'
 
