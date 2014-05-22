@@ -1,41 +1,46 @@
-# Add Repository
-tap homebrew/versions || true
-tap phinze/homebrew-cask || true
-tap homebrew/binary || true
-# Brew Update
-update || true
-# Brew Cask
-install brew-cask || true
-# Packages
-install --disable-etcdir zsh || true
-install vim || true
-install jq || true
-install curl || true
-install wget || true
-install dnsmasq || true
-install composer || true
-# Cask Packages
-cask install iterm2 || true
-cask install alfred || true
-cask install dash || true
-cask install skitch || true
-cask install evernote || true
-cask install dropbox || true
-cask install skype || true
-cask install sourcetree || true
-cask install mysqlworkbench || true
-cask install sequel-pro || true
-cask install firefox || true
-cask install google-chrome || true
-cask install yorufukurou || true
-cask install kobito || true
-cask install virtualbox || true
-cask install vagrant || true
-cask install sublime-text || true
-cask install eclipse-ide || true
-cask install the-unarchiver || true
-cask install imageoptim || true
-cask install speedlimit || true
-cask install colors || true
-cask install sitesucker || true
-cask install google-japanese-ime || true
+update
+upgrade
+
+tap homebrew/versions
+tap phinze/homebrew-cask
+tap homebrew/binary
+# ricty
+tap sanemat/font
+
+# 各種インストール
+install brew-cask
+install rbenv ruby-build zsh vimgit sl ctags mysql tmux openssl ricty cmake fish wget curl cmake libtool automake tig ag z dnsmasq composer jq
+
+cask install iterm2
+cask install alfred
+cask install appcode
+cask install dash
+cask install skitch
+cask install evernote
+cask install skype
+cask install sourcetree
+cask install mysqlworkbench
+cask install sequel-pro
+cask install google-chrome
+cask install google-japanese-ime
+cask install firefox
+cask install yorufukurou
+cask install kobito
+cask install virtualbox
+cask install vagrant
+cask install sublime-text
+cask install eclipse-ide
+cask install magican
+cask install the-unarchiver
+cask install imageoptim
+cask install speedlimit
+cask install colors
+cask install clipmenu
+cask install sitesucker
+cask install github
+cask install omnifocus
+cask install keyremap4macbook
+cask install pckeyboardhack
+cask install appcleaner
+cask install openoffice
+cask install remote-desktop-connection
