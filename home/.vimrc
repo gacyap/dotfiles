@@ -1,5 +1,4 @@
-"viと互換しない
-set nocompatible
+"viと互換しない set nocompatible
 if has('vim_starting') && has('reltime')
     let g:startuptime = reltime()
     augroup vimrc-startuptime
@@ -93,6 +92,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'rking/ag.vim' 
 "multi-words hilight manager
 NeoBundle 't9md/vim-quickhl' 
+NeoBundle 'vim-scripts/taglist.vim'
 
 " unite
 let g:unite_enable_start_insert=1
@@ -131,6 +131,11 @@ NeoBundle 'w0ng/vim-hybrid'
 let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
 let g:Powerline_symbols = 'fancy'
+
+" taglist
+let Tlist_Show_One_File = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Exit_OnlyWindow = 1
 
 " load *.vim files
 set runtimepath+=~/.vim/
