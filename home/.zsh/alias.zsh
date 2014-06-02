@@ -1,6 +1,7 @@
 # エイリアス
 alias rl='source ~/.zshrc'
 alias rlv='source ~/.vimrc'
+alias dev='ssh t_shimomura@192.168.240.144'
 
 alias ..='cd ..'
 alias ...='cd ../..'

@@ -9,7 +9,7 @@ tap sanemat/font
 
 # 各種インストール
 install brew-cask
-install rbenv ruby-build zsh vimgit sl ctags mysql tmux openssl ricty cmake fish wget curl cmake libtool automake tig ag z dnsmasq composer jq
+install rbenv ruby-build zsh vimgit sl ctags mysql tmux openssl ricty cmake fish wget curl cmake libtool automake tig ag z dnsmasq composer jq sbt
 
 cask install iterm2
 cask install alfred
