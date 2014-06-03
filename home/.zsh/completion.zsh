@@ -1,14 +1,12 @@
 # 補完
-if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
+#if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
     fpath=($HOME/.zsh/zsh-completions/src $fpath)
-fi
-if [[ -d $HOME/.zsh/completions ]]; then
-    fpath=($HOME/.zsh/completions $fpath)
-fi
-# autoload -Uz compinit
-# compinit -u
-# 補完機能を有効にする
-autoload -Uz compinit; compinit
+#fi
+#if [[ -d $HOME/.zsh/completion ]]; then
+#    fpath=($HOME/.zsh/completion $fpath)
+#fi
+autoload -Uz compinit
+compinit -u
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

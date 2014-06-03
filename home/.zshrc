@@ -2,7 +2,7 @@
 export LANG=ja_JP.UTF-8
 autoload -Uz colors
 colors
-# keyBind like vim
+# keyBind like emacs
 bindkey -e
 
 source ~/.zsh/env.zsh
@@ -15,6 +15,11 @@ source ~/.zsh/vcs.zsh
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+# 日本語ファイル名を表示可能
+setopt print_eight_bit
+# フローコントロールを無効
+setopt no_flow_control
 
 # プロンプト
 # 2行表示
@@ -30,7 +35,6 @@ zstyle ':zle:*' word-style unspecified
 
 ########################################
 # キーバインド
-
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
