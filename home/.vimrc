@@ -43,6 +43,7 @@ set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis
 set fileformats=unix,dos,mac
 set helplang& helplang=ja,en
+set guifont=Ricty:h15
 "not make file.swp
 set noswapfile
 set number
