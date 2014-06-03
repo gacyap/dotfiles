@@ -1,7 +1,7 @@
 # 補完
-#if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
+if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
     fpath=($HOME/.zsh/zsh-completions/src $fpath)
-#fi
+fi
 #if [[ -d $HOME/.zsh/completion ]]; then
 #    fpath=($HOME/.zsh/completion $fpath)
 #fi
