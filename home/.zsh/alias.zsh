@@ -2,6 +2,7 @@
 alias rl='source ~/.zshrc'
 alias rlv='source ~/.vimrc'
 alias dev='ssh t_shimomura@192.168.240.144'
+#alias dev='cd ~/Documents/workspace/mnt/carthage_dev'
 
 alias ..='cd ..'
 alias ...='cd ../..'

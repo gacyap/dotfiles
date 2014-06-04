@@ -8,14 +8,17 @@ tap homebrew/binary
 tap sanemat/font
 
 # 各種インストール
-install brew-cask
-install rbenv ruby-build zsh vimgit sl ctags mysql tmux openssl ricty cmake 
-install fish wget curl cmake libtool automake tig tree ag z dnsmasq composer jq sbt 
+install openssl cmake wget curl libtool ctags vim zsh tmux ag tree git tig 
+install fish automake z dnsmasq composer jq sbt 
+install rbenv ruby-build vimgit sl mysql ricty
+install heroku-toolbelt imagemagick pdftk w3m
 # mount
-install fuse4x-kext sshfs
+install fuse4x-kext osxfuse sshfs
 # sudo cp -rfX /usr/local/Cellar/fuse4x-kext/0.9.0/Library/Extensions/fuse4x.kext /Library/Extensions
 # sudo chmod +s /Library/Extensions/fuse4x.kext/Support/load_fuse4x
 # sshfs username@host:/path/to/source ./mnt_point_path
+
+install brew-cask
 
 cask install iterm2
 cask install alfred
@@ -34,6 +37,7 @@ cask install yorufukurou
 cask install kobito
 cask install virtualbox
 cask install vagrant
+cask install shiftit
 cask install sublime-text
 cask install eclipse-ide
 cask install magican
@@ -50,3 +54,7 @@ cask install pckeyboardhack
 cask install appcleaner
 cask install openoffice
 cask install remote-desktop-connection
+cask install hyperswitch
+
+# 不要なファイルを削除
+cleanup

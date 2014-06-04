@@ -1,10 +1,14 @@
 # 補完
+# 自動でドットファイルをマッチする
+setopt glog_dots
+
 if [[ -d $HOME/.zsh/zsh-completions/src ]]; then
     fpath=($HOME/.zsh/zsh-completions/src $fpath)
 fi
 #if [[ -d $HOME/.zsh/completion ]]; then
 #    fpath=($HOME/.zsh/completion $fpath)
 #fi
+# 自動補完
 autoload -Uz compinit
 compinit -u
 

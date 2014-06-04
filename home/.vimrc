@@ -79,6 +79,9 @@ set wildmode=list,full
 "nnoremap <S-Space> kzz
 "set cursorline
 
+"jj でノーマルモード
+inoremap jj <esc>
+
 " Unite
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
