@@ -97,6 +97,31 @@ NeoBundle 'rking/ag.vim'
 "multi-words hilight manager
 NeoBundle 't9md/vim-quickhl' 
 NeoBundle 'vim-scripts/taglist.vim'
+NeoBundle 'rizzatti/dash.vim'
+
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'fuenor/qfixgrep.git'
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'toyamarinyon/vim-swift'
+
+" memolist.vim settings
+let g:memolist_path = "~/Dropbox/vim/memolist"
+let g:memolist_template_dir_path = "~/.vim/template/memolist"
+let g:memolist_memo_suffix = "md"
+let g:memolist_memo_date = "%Y-%m-%d"
+let g:memolist_prompt_tags = 1
+let g:memolist_qfixgrep = 1
+let g:memolist_filename_prefix_none = 1
+let g:memolist_unite = 1
+let g:memolist_unite_source = "file_rec"
+let g:memolist_unite_option = "-auto-preview -start-insert"
+" command
+command! -nargs=0 -bar KobitoAdd execute 'silent !open -a Kobito.app ' .expand('%:p')
+command! -nargs=? MyMemoNew :call memolist#new(<q-args>)|w|KobitoAdd
+" keymap
+nnoremap <Space>mn :<C-u>MyMemoNew<CR>
+nnoremap <Space>ml :<C-u>MemoList<CR>
+nnoremap <Space>mg :<C-u>MemoGrep<CR>
 
 " unite
 let g:unite_enable_start_insert=1

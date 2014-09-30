@@ -24,6 +24,7 @@ alias gpl='git pull'
 alias gplom='git pull origin master'
 alias gd='git diff'
 alias gdc'git diff --cached'
+alias phpinfo='php -r "phpinfo();"'
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '

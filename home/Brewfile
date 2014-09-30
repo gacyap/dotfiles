@@ -4,6 +4,7 @@ upgrade
 tap homebrew/versions
 tap phinze/homebrew-cask
 tap homebrew/binary
+tap caskroom/versions
 # ricty
 tap sanemat/font
 
@@ -12,11 +13,11 @@ install openssl cmake wget curl libtool ctags vim zsh tmux ag tree git tig
 install fish automake z dnsmasq composer jq sbt 
 install rbenv ruby-build vimgit sl mysql ricty
 install heroku-toolbelt imagemagick pdftk w3m
+install mtr #extend traceroute
+install htop #extend top
+install dfc #extend df
 # mount
 install fuse4x-kext osxfuse sshfs
-# sudo cp -rfX /usr/local/Cellar/fuse4x-kext/0.9.0/Library/Extensions/fuse4x.kext /Library/Extensions
-# sudo chmod +s /Library/Extensions/fuse4x.kext/Support/load_fuse4x
-# sshfs username@host:/path/to/source ./mnt_point_path
 
 install brew-cask
 
@@ -24,6 +25,7 @@ cask install iterm2
 cask install alfred
 cask install appcode
 cask install dash
+cask install hipchat
 cask install skitch
 cask install evernote
 cask install skype
@@ -55,6 +57,8 @@ cask install appcleaner
 cask install openoffice
 cask install remote-desktop-connection
 cask install hyperswitch
+cask install gitter
+cask install sequel-pro
 
 # 不要なファイルを削除
 cleanup

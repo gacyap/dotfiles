@@ -12,6 +12,7 @@ setopt interactive_comments
 
 # ディレクトリ名だけでcdする
 setopt auto_cd
+cdpath=(.. ~ ~/Documents/workspace/mnt/carthage_dev)
 
 # cd した先のディレクトリをディレクトリスタック(履歴)に追加
 setopt auto_pushd

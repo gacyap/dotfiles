@@ -1,0 +1,5 @@
+# {{_title_}}
+- - -
+date: {{_date_}}
+tags: [{{_tags_}}]
+- - -

@@ -71,7 +71,7 @@ fi
 w3m http://www.google.co.jp/$opt$tbs
 }
 
-function ch() {
+function chrome() {
 local str opt
 if [ $ != 0 ]; then
     for i in $*; do
@@ -87,9 +87,36 @@ open -a Google\ Chrome http://www.google.co.jp/$opt
 # w3mでALC検索
 function alc() {
 if [ $ != 0 ]; then
-    w3m "http://eow.alc.co.jp/$*/UTF-8/?ref=sa"
+    # w3m "http://eow.alc.co.jp/$*/UTF-8/?ref=sa"
+    open -a Google\ Chrome "http://eow.alc.co.jp/search?q=${*}&ref=sa"
 else
     w3m "http://www.alc.co.jp/"
+fi
+}
+
+function jira() {
+# echo $#
+# echo $@
+# echo $*
+# echo $0
+# echo $1
+# 引数が1つ以上
+if [ $# -ge 1 ]; then
+    for i in $*; do
+        open -a Google\ Chrome "https://tool.devsep.com/jira/browse/XMAX-$i"
+    done
+else
+    open -a Google\ Chrome "https://tool.devsep.com/jira/issues/?jql=project%20%3D%20XMAX"
+fi
+}
+
+function stash() {
+if [ $# -ge 1 ]; then
+    for i in $*; do
+        open -a Google\ Chrome "https://tool.devsep.com/stash/projects/XMAX/repos/carthage/commits?until=refs%2Fheads%2FXMAX-$i"
+    done
+else
+    open -a Google\ Chrome "https://tool.devsep.com/stash/projects/XMAX/repos/carthage/pull-requests"
 fi
 }
 ########################################

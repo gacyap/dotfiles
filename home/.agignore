@@ -15,5 +15,6 @@ jquery-*.js
 bootstrap*.css
 bootstrap*.js
 jquery.js
+jquery.min.js
 node_modules
 vendor/bundle
