@@ -8,10 +8,8 @@ tap homebrew/binary
 tap sanemat/font
 
 # 各種インストール
-install openssl cmake wget curl libtool ctags vim zsh tmux ag tree git tig 
-install fish automake z dnsmasq composer jq sbt 
-install rbenv ruby-build vimgit sl mysql ricty
-install heroku-toolbelt imagemagick pdftk w3m
+install openssl cmake wget curl libtool ctags vim zsh tmux ag tree git tig rbenv ruby-build vim git sl mysql ricty heroku-toolbelt imagemagick w3m fish automake z dnsmasq jq sbt
+
 # mount
 install fuse4x-kext osxfuse sshfs
 # sudo cp -rfX /usr/local/Cellar/fuse4x-kext/0.9.0/Library/Extensions/fuse4x.kext /Library/Extensions
@@ -40,7 +38,7 @@ cask install vagrant
 cask install shiftit
 cask install sublime-text
 cask install eclipse-ide
-cask install magican
+#cask install magican
 cask install the-unarchiver
 cask install imageoptim
 cask install speedlimit
@@ -49,12 +47,13 @@ cask install clipmenu
 cask install sitesucker
 cask install github
 cask install omnifocus
-cask install keyremap4macbook
-cask install pckeyboardhack
+#cask install pckeyboardhack
 cask install appcleaner
 cask install openoffice
 cask install remote-desktop-connection
 cask install hyperswitch
+cask install karabiner
+cask install intellij-idea
 
 # 不要なファイルを削除
 cleanup
